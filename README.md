@@ -3,17 +3,21 @@ Please try the following lines of code in the command prompt.
 
   python construct_database.py --start_date '2017-01-01' --end_date '2017-12-31'
   
-- Update the database.
-  
-  python update.py
-  
 - Return the list of available symbols. 
   
   python stock_price.py
   
 - Returns the historical price data and the PNL of a stock.
   
-  python stock_price.py --symbol 'PIH' --start_date '2018-01-01' --end_date '2018-01-31'
+  python stock_price.py --symbol 'PIH' --start_date '2017-01-01' --end_date '2017-01-31'
+  
+- Update the database to today.
+  
+  python update.py
+
+- Update the database every 30 seconds.
+  
+  python daily_update.py --s 30
 
 In addition, to compute PNL, I adopt the MACD(12, 26, 9) trading strategy: 
 1. Compute 12-day exponential moving average of the closing price.
