@@ -1,6 +1,7 @@
-import datetime, sqlite3
+import datetime, fire, sqlite3
 import pandas as pd
 from pandas_datareader import data as web
+from threading import Timer
 
 def update():
     conn = sqlite3.connect('NASDAQ.db')
@@ -36,8 +37,13 @@ def update():
 
     conn.close()
 
-def main():
+def daily_update(s=86400):
     update()
+    t = Timer(s, daily_update, (s,))
+    t.start()
+  
+def main():
+    fire.Fire(daily_update)
     
 if __name__ == '__main__':
     main()
